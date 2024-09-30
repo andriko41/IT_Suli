@@ -14,7 +14,7 @@ console.log('tomb2',tomb2);
 let paros = []
 for (let i = 0; i < tomb2.length; i++)
 {
-    if (tomb2[i] % 2 == 0)
+    if (tomb2[i] % 2 === 0)
    paros.push(tomb2[i]); 
 }
 console.log('tomb2 paros', paros);
@@ -32,11 +32,11 @@ console.log('tomb3 Szorzas',tomb3);
 
 const tomb4 = [6,11,22,36,41];
 console.log('tomb4', tomb4);
-console.log('benne van a 11 =',tomb4.includes(11));
+console.log('benne van a 11 =',tomb4.includes = (10));
 
 //vagy
 
-const talalt = tomb4.find((element) => element > 10);
+const talalt = tomb4.find((element) => element > 11);
 
 console.log('vagy talalt', talalt);
 
@@ -58,3 +58,42 @@ return tomb6.filter((item,
   index) => tomb6.indexOf(item) === index);
 }
 console.log('tomb6 duplikalt', duplikalteltavolitas(tomb6));
+
+// II szezon
+
+// 1 feladat azonos index osszeadas
+
+const pelda1 = [1,2,3,4,5]
+const pelda2 = [4,5,6,7,8]
+let p1p2osszege =[pelda1.length]
+
+  for (let i = 0; i< pelda1.length; i++ ){
+    p1p2osszege[i] = pelda1[i] + pelda2[i];
+  }
+  
+  console.log('pelda1,2 oszegge',p1p2osszege);
+
+// 2 feladat
+
+let forditottszorzas =[pelda1.length]
+
+for (let i = 0; i< pelda1.length; i++ ){
+  forditottszorzas[i] =pelda1[i] * pelda2[pelda2.length-i-1];
+}
+
+console.log('pelda1,2forditottszorzata',forditottszorzas);
+
+// 3 feladat
+
+ const duplikalt = pelda1.filter(i => pelda2.includes(i));
+ console.log('kozosszamok:',duplikalt)
+
+ //for (let i = 0; i< pelda1.length; i++ ){ 
+ //if (pelda1.filter(i => pelda2.includes(i))){
+ // return true ; 
+ //} 
+ // return false;
+ // }
+ 
+
+ 
