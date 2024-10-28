@@ -1,5 +1,4 @@
-import { getUsers,addUsers,modifyUsers, deleteUsers } from "../db.js"
-
+import { getUsers,addUsers,modifyUsers, deleteUsers } from "../data/userdb.js"
 
  async function GetUsers(req, res) {
     res.send(await getUsers())  

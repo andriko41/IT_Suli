@@ -1,4 +1,4 @@
-import { addCategory, getCategory, deleteCategory, modifyCategory } from "../db.js"
+import { addCategory, getCategory, deleteCategory, modifyCategory } from "../data/categorydb.js"
 
 
 async function GetCategory(req, res) {
@@ -32,3 +32,4 @@ export const categoryController = {
     ModifyCategory,
     DeleteCategory
 }
+
