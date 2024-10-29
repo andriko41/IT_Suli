@@ -3,9 +3,9 @@ import { client } from "../db.js"
 export function createCategory(){
     client.query(`
     CREATE TABLE IF NOT EXISTS  kategoriak (
-kategoriaID INT GENERATED ALWAYS AS IDENTITY,
-kategorianev VARCHAR(255) NOT NULL,
-PRIMARY KEY (kategoriaID)
+    kategoriaID INT GENERATED ALWAYS AS IDENTITY,
+    kategorianev VARCHAR(255) NOT NULL,
+    PRIMARY KEY (kategoriaID)
         )`)
 }
 
@@ -24,7 +24,7 @@ export async function getCategory() {
 export async function deleteCategory(kategoriaID) {
   const category = await client.query(`
     DELETE FROM kategoriak
-    WHERE id = ${kategoriaID}
+    WHERE kategoriaID = ${kategoriaID}
     `)
   return category.rows
 }
@@ -33,6 +33,6 @@ export async function modifyCategory(kategoriaID, kategorianev) {
     const category =await client.query(`
       UPDATE kategoriak
        SET kategorianev = '${kategorianev}'
-       WHERE id = ${kategoriaID}
+       WHERE kategoriaID = ${kategoriaID}
        `)
     } 

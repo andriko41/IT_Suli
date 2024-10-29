@@ -27,7 +27,7 @@ export async function addUsers(nev, email){
   export async function deleteUsers(felhasznaloID) {
     const users = await client.query(`
       DELETE FROM felhasznalok
-       WHERE id = ${felhasznaloID}
+       WHERE felhasznaloID = ${felhasznaloID}
       `)
     return users.rows
   }  
@@ -36,7 +36,7 @@ export async function addUsers(nev, email){
     const user =await client.query(`
       UPDATE felhasznalok
        SET nev = '${nev}', email = '${email}'
-       WHERE id = ${felhasznaloID}
+       WHERE felhasznaloID = ${felhasznaloID}
        `)
     }
 

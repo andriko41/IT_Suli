@@ -11,9 +11,9 @@ async function AddArticle(req, res) {
 }
 
 async function ModifyArticle(req, res) {
-    const {cikkcim, szerzoID, szoveg, kategoriaID} = req.body
+    const {cikkcim, szoveg} = req.body
     const {cikkID} = req.params
-    res.send(await modifyArticle(cikkID, cikkcim, szerzoID, szoveg, kategoriaID))
+    res.send(await modifyArticle(cikkID, cikkcim,  szoveg,))
 }
 
 async function DeleteArticle(req, res) {

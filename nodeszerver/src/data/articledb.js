@@ -15,30 +15,30 @@ export function createCikkek(){
       ) `)
     }  
 
-export async function addArticle(cikkcim, szerzoID, szoveg, kategoriaID ){
+export async function addArticle(cikkcim, szerzoID, szoveg, kategoriaID){
     await client.query(`
         INSERT INTO cikkek (cikkID, cikkcim, cikkdatum, szerzoID, szoveg, kategoriaID )
          VALUES (DEFAULT, '${cikkcim}', NOW(), ${szerzoID}, '${szoveg}', ${kategoriaID})
         `)
         }
       
-        export async function getArticle() {
+export async function getArticle() {
           const article = await client.query(`SELECT * FROM cikkek`)
           return article.rows
         }
       
-        export async function deleteArticle(cikkID) {
+export async function deleteArticle(cikkID) {
           const article = await client.query(`
             DELETE FROM cikkek
-             WHERE id = ${cikkID}
+             WHERE cikkID = ${cikkID}
             `)
           return article.rows
         }  
       
-        export async function modifyArticle(cikkID, cikkcim, szoveg) {
+export async function modifyArticle(cikkID, cikkcim, szoveg) {
           const article =await client.query(`
             UPDATE cikkek
              SET cikkcim = '${cikkcim}', szoveg = '${szoveg}'
-             WHERE id = ${cikkID}
+             WHERE cikkID = ${cikkID}
              `)
           }
