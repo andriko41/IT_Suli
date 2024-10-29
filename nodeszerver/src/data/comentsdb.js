@@ -10,7 +10,9 @@ export function createHozzaszolasok(){
     cikkID INT,
     datum TIMESTAMP,
     szoveg VARCHAR(255),
-    PRIMARY KEY (hozzaszolasID)
+    PRIMARY KEY (hozzaszolasID),
+    CONSTRAINT fk_felhasznaloID FOREIGN KEY(felhasznaloID) REFERENCES felhasznalok(felhasznaloID),
+    CONSTRAINT fk_cikkID FOREIGN KEY(cikkID) REFERENCES cikkek(cikkID)
        ) `)
     }  
 

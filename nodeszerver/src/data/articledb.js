@@ -11,7 +11,9 @@ export function createCikkek(){
       szerzoID INT,
       szoveg VARCHAR(255),
       kategoriaID INT,
-      PRIMARY KEY (cikkID)
+      PRIMARY KEY (cikkID),
+      CONSTRAINT fk_szerzoID FOREIGN KEY(szerzoID) REFERENCES felhasznalok(felhasznaloID),
+      CONSTRAINT fk_kategoriaID FOREIGN KEY(kategoriaID) REFERENCES kategoriak(kategoriaID)
       ) `)
     }  
 
