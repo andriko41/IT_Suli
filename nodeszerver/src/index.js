@@ -3,12 +3,14 @@ import { createUser} from './data/userdb.js'
 import { createCategory} from './data/categorydb.js'
 import { createCikkek } from './data/articledb.js'
 import { createHozzaszolasok } from './data/comentsdb.js'
+import { createKedvencek } from './data/favdb.js'
 import morgan from 'morgan'
 import bodyParser from 'body-parser'
 import { userRouter } from './routes/user.js'
 import { categoryRouter } from './routes/category.js'
 import { articleRouter } from './routes/article.js'
 import { comentsRouter } from './routes/coments.js'
+import { favsRouter } from './routes/fav.js'
 
 
 const app = express()
@@ -26,6 +28,8 @@ app.use('/article', articleRouter)
 
 app.use('/coments', comentsRouter)
 
+app.use('/favs', favsRouter)
+
 
 
 
@@ -35,6 +39,6 @@ app.listen(port, () => {
     createUser(),
     createCategory(),
     createCikkek(),
-    createHozzaszolasok()
-
+    createHozzaszolasok(),
+    createKedvencek()
 })
