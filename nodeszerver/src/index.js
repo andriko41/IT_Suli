@@ -11,7 +11,7 @@ import { categoryRouter } from './routes/category.js'
 import { articleRouter } from './routes/article.js'
 import { comentsRouter } from './routes/coments.js'
 import { favsRouter } from './routes/fav.js'
-
+import { authRouter } from './routes/auth.js'
 
 const app = express()
 
@@ -21,6 +21,8 @@ app.use(bodyParser.json())
 app.use(morgan('dev'))
 
 app.use('/users', userRouter)
+
+app.use('/login', authRouter)
 
 app.use('/category', categoryRouter)
 

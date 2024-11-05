@@ -5,16 +5,17 @@ export function createUser(){
     CREATE TABLE IF NOT EXISTS felhasznalok (
             felhasznaloID INT GENERATED ALWAYS AS IDENTITY,
             nev VARCHAR(100) NOT NULL,
+            jelszo VARCHAR(100),
             email VARCHAR(100),
             datum TIMESTAMP,
             PRIMARY KEY (felhasznaloID)
         )`)
 }
 
-export async function addUsers(nev, email){
+export async function addUsers(nev,jelszo, email){
   await client.query(`
-  INSERT INTO felhasznalok (felhasznaloID, nev, email, datum)
-   VALUES (DEFAULT, '${nev}', '${email}', NOW())
+  INSERT INTO felhasznalok (felhasznaloID, nev, jelszo, email, datum)
+   VALUES (DEFAULT, '${nev}', '${jelszo}', '${email}', NOW())
   `)
   
   }
@@ -33,11 +34,15 @@ export async function addUsers(nev, email){
   }  
 
   export async function modifyUsers(felhasznaloID, nev, email) {
-    const user =await client.query(`
+    const users =await client.query(`
       UPDATE felhasznalok
        SET nev = '${nev}', email = '${email}'
        WHERE felhasznaloID = ${felhasznaloID}
        `)
     }
 
- 
+    export async function loginUser(felhasznaloID, jelszo) {
+     const login = await client.query(`SELECT * FROM felhasznalok 
+        WHERE felhasznaloID = ${felhasznaloID} AND jelszo = '${jelszo}'`)
+      return client.query
+    }
