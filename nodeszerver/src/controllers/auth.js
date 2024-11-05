@@ -16,7 +16,7 @@ async function LoginUser(req, res) {
             res.status(400).send('nem ugyanaz a ket jelszo')
             return
         }
-        await loginUser(felhasznaloID, jelszo)
+        await loginUser(felhasznaloID)
     res.send('sikeres bejelentkezes')
     }   catch (error) {
     res.status(400).send(error)

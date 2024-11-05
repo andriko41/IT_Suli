@@ -43,6 +43,6 @@ export async function addUsers(nev,jelszo, email){
 
     export async function loginUser(felhasznaloID, jelszo) {
      const login = await client.query(`SELECT * FROM felhasznalok 
-        WHERE felhasznaloID = ${felhasznaloID} AND jelszo = '${jelszo}'`)
+        WHERE felhasznaloID = ${felhasznaloID}`)
       return client.query
     }
