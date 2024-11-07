@@ -1,5 +1,5 @@
-import { Router } from "express";
-import { comentsController } from "../controllers/coments.js";
+import { Router } from 'express'
+import { comentsController } from '../controllers/coments.js'
 
 export const comentsRouter = Router()
 

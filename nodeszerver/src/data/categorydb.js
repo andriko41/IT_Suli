@@ -1,7 +1,7 @@
-import { client } from "../db.js"
+import { client } from '../db.js'
 
-export function createCategory(){
-    client.query(`
+export function createCategory() {
+  client.query(`
     CREATE TABLE IF NOT EXISTS  kategoriak (
     kategoriaID INT GENERATED ALWAYS AS IDENTITY,
     kategorianev VARCHAR(255) NOT NULL,
@@ -9,7 +9,7 @@ export function createCategory(){
         )`)
 }
 
-export function addCategory(kategorianev){
+export function addCategory(kategorianev) {
   client.query(`
     INSERT INTO kategoriak (kategoriaID, kategorianev)
     VALUES (DEFAULT, '${kategorianev}')
@@ -30,9 +30,9 @@ export async function deleteCategory(kategoriaID) {
 }
 
 export async function modifyCategory(kategoriaID, kategorianev) {
-    const category =await client.query(`
+  await client.query(`
       UPDATE kategoriak
        SET kategorianev = '${kategorianev}'
        WHERE kategoriaID = ${kategoriaID}
        `)
-    } 
+}

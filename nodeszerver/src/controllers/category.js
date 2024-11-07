@@ -1,46 +1,49 @@
-import { addCategory, getCategory, deleteCategory, modifyCategory } from "../data/categorydb.js"
+import {
+  addCategory,
+  getCategory,
+  deleteCategory,
+  modifyCategory
+} from '../data/categorydb.js'
 import Joi from 'joi'
 
 const addRule = Joi.object({
-    kategorianev: Joi.string().required().min(3).max(10),
-  })
-
+  kategorianev: Joi.string().required().min(3).max(20)
+})
 
 async function GetCategory(req, res) {
-    res.send(await getCategory())  
+  res.send(await getCategory())
 }
-
 
 async function AddCategory(req, res) {
-try { const {kategorianev} = await addRule.validateAsync(req.body)
+  try {
+    const { kategorianev } = await addRule.validateAsync(req.body)
     await addCategory(kategorianev)
     res.send('sikeres')
-}   catch (error) {
+  } catch (error) {
     res.status(400).send(error)
-    }
+  }
 }
-
 
 async function ModifyCategory(req, res) {
-try { const { kategorianev} = await addRule.validateAsync(req.body)
-    const {kategoriaID} = req.params
-    res.send(await modifyCategory(kategoriaID, kategorianev))
-}   catch (error) {
+  try {
+    const { kategorianev } = await addRule.validateAsync(req.body)
+    const { kategoriaID } = req.params
+    await modifyCategory(kategoriaID, kategorianev)
+    res.send('sikeres')
+  } catch (error) {
     res.status(400).send(error)
-    }
+  }
 }
-
 
 async function DeleteCategory(req, res) {
-    const {kategoriaID} = req.params
-    res.send(await deleteCategory(kategoriaID))
+  const { kategoriaID } = req.params
+  await deleteCategory(kategoriaID)
+  res.send('sikeres')
 }
-
 
 export const categoryController = {
-    GetCategory,
-    AddCategory,
-    ModifyCategory,
-    DeleteCategory
+  GetCategory,
+  AddCategory,
+  ModifyCategory,
+  DeleteCategory
 }
-

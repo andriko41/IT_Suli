@@ -1,7 +1,7 @@
-import { client } from "../db.js"
+import { client } from '../db.js'
 
-export function createKedvencek(){
-    client.query(`
+export function createKedvencek() {
+  client.query(`
     CREATE TABLE IF NOT EXISTS kedvencek (
     felhasznaloID int NOT NULL,
     cikkID int NOT NULL,
@@ -9,25 +9,24 @@ export function createKedvencek(){
     CONSTRAINT fk_felhasznaloID FOREIGN KEY(felhasznaloID) REFERENCES felhasznalok(felhasznaloID),
     CONSTRAINT fk_cikkID FOREIGN KEY(cikkID) REFERENCES cikkek(cikkID)
        ) `)
-    }  
+}
 
-export async function addFavs(felhasznaloID, cikkID,){
-    await client.query(`
+export async function addFavs(felhasznaloID, cikkID) {
+  await client.query(`
         INSERT INTO kedvencek (felhasznaloID, cikkID)
         VALUES (${felhasznaloID}, ${cikkID})
            `)
-    }
+}
 
 export async function getFavs() {
-        const favs = await client.query(`SELECT * FROM kedvencek`)
-        return favs.rows
-    }
+  const favs = await client.query(`SELECT * FROM kedvencek`)
+  return favs.rows
+}
 
-export async function deleteFavs(felhasznaloID) {
-        const favs = await client.query(`
+export async function deleteFavs(felhasznaloID, cikkID) {
+  const favs = await client.query(`
         DELETE FROM kedvencek
-         WHERE felhasznaloID = ${felhasznaloID}
+         WHERE felhasznaloID = ${felhasznaloID} AND cikkid = ${cikkID}
         `)
-        return favs.rows
-      }      
-
+  return favs.rows
+}
