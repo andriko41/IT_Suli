@@ -40,8 +40,8 @@ export async function modifyUsers(felhasznaloID, nev, email) {
        `)
 }
 
-export async function loginUser(felhasznaloID) {
+export async function loginUser(email) {
   const login = await client.query(`SELECT * FROM felhasznalok 
-        WHERE felhasznaloID = ${felhasznaloID}`)
+        WHERE email = '${email}'`)
   return login.rows[0].jelszo
 }

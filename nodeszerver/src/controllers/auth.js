@@ -3,15 +3,14 @@ import Joi from 'joi'
 import bcrypt from 'bcrypt'
 
 const addRule = Joi.object({
-  felhasznaloID: Joi.number().required(),
+  email: Joi.string().required().min(6).max(40),
   loginjelszo: Joi.string().required().min(3).max(15)
 })
 
 async function LoginUser(req, res) {
   try {
-    const { felhasznaloID, loginjelszo } = await addRule.validateAsync(req.body)
-    const jelszo = await loginUser(felhasznaloID)
-    console.log(jelszo)
+    const { email, loginjelszo } = await addRule.validateAsync(req.body)
+    const jelszo = await loginUser(email)
     const ugyanaz = await bcrypt.compare(loginjelszo, jelszo)
     if (!ugyanaz) {
       res.status(400).send('helytelen jelszo')
