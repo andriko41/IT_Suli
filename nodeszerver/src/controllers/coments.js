@@ -4,17 +4,7 @@ import {
   deleteComents,
   modifyComents
 } from '../data/comentsdb.js'
-import Joi from 'joi'
-
-const addRule = Joi.object({
-  szoveg: Joi.string().required().min(5).max(100),
-  felhasznaloID: Joi.number().required(),
-  cikkID: Joi.number().required()
-})
-
-const modifyRule = Joi.object({
-  szoveg: Joi.string().required().min(5).max(100)
-})
+import { addRule, modifyRule } from '../validators/coments.js'
 
 async function GetComents(req, res) {
   res.send(await getComents())

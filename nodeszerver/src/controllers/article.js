@@ -4,19 +4,7 @@ import {
   modifyArticle,
   deleteArticle
 } from '../data/articledb.js'
-import Joi from 'joi'
-
-const addRule = Joi.object({
-  cikkcim: Joi.string().required().min(3).max(20),
-  szoveg: Joi.string().required().min(5).max(100),
-  szerzoID: Joi.number().required(),
-  kategoriaID: Joi.number().required()
-})
-
-const modifyRule = Joi.object({
-  cikkcim: Joi.string().required().min(3),
-  szoveg: Joi.string().required().min(5).max(100)
-})
+import { addRule, modifyRule } from '../validators/article.js'
 
 async function GetArticle(req, res) {
   res.send(await getArticle())

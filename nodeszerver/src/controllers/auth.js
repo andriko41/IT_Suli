@@ -1,11 +1,6 @@
 import { loginUser } from '../data/userdb.js'
-import Joi from 'joi'
+import { addRule } from '../validators/auth.js'
 import bcrypt from 'bcrypt'
-
-const addRule = Joi.object({
-  email: Joi.string().required().min(6).max(40),
-  loginjelszo: Joi.string().required().min(3).max(15)
-})
 
 async function LoginUser(req, res) {
   try {

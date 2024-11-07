@@ -1,10 +1,5 @@
 import { addFavs, getFavs, deleteFavs } from '../data/favdb.js'
-import Joi from 'joi'
-
-const addRule = Joi.object({
-  felhasznaloID: Joi.number().required(),
-  cikkID: Joi.number().required()
-})
+import { addRule } from '../validators/favs.js'
 
 async function GetFavs(req, res) {
   res.send(await getFavs())

@@ -4,11 +4,7 @@ import {
   deleteCategory,
   modifyCategory
 } from '../data/categorydb.js'
-import Joi from 'joi'
-
-const addRule = Joi.object({
-  kategorianev: Joi.string().required().min(3).max(20)
-})
+import { addRule } from '../validators/category.js'
 
 async function GetCategory(req, res) {
   res.send(await getCategory())

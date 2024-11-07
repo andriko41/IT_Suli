@@ -1,18 +1,7 @@
 import { getUsers, addUsers, modifyUsers, deleteUsers } from '../data/userdb.js'
-import Joi from 'joi'
+import { addRule, modifyRule } from '../validators/user.js'
 import bcrypt from 'bcrypt'
 
-const addRule = Joi.object({
-  nev: Joi.string().required().min(3).max(15),
-  jelszo: Joi.string().required().min(3).max(15),
-  email: Joi.string().required().min(8).max(30),
-  jelszoMegerosit: Joi.string().required().min(3).max(15)
-})
-
-const modifyRule = Joi.object({
-  nev: Joi.string().required().min(3).max(15),
-  email: Joi.string().required().min(8).max(30)
-})
 async function GetUsers(req, res) {
   res.send(await getUsers())
 }
