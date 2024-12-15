@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+
+<head>
+  <title>auto</title>
+  <meta charset="utf-8 " />
+  <meta name="title" content="auto" />
+  <meta name="description" content="auto" />
+</head>
+
+<body>
+  <input type="text" id="marka" />
+  <input type="text" id="rendszam" />
+  <input type="radio" value="piros" name="szin" />
+  <label for="piros">Piros</label>
+  <input type="radio" value="fekete" name="szin" />
+  <label for="fekete">Fekete</label>
+  <input type="radio" value="feher" name="szin" />
+  <label for="feher">Feher</label>
+  <input type="radio" value="kek" name="szin" />
+  <label for="kek">Kek</label>
+  <input type="checkbox" name="extrak" value="automata" />
+  <label for="automata">Automata</label>
+  <input type="checkbox" name="extrak" value="ules futes" />
+  <label for="ules futes">Ules futes</label>
+  <input type="checkbox" name="extrak" value="tolato radar" />
+  <label for="tolato radar">Tolato radar</label>
+
+  <button onclick="butykoles()">potty</button>
+  <script>
+    function butykoles() {
+      const marka = document.getElementById("marka");
+      const rendszam = document.getElementById("rendszam");
+      const szin = document.getElementsByName("szin");
+      const extrak = document.getElementsByName("extrak");
+      console.log(marka.value);
+      console.log(rendszam.value);
+      for (let i = 0; i < szin.length; i++) {
+        if (szin[i].checked) {
+          console.log(szin[i].value);
+        }
+      }
+      for (let i = 0; i < extrak.length; i++) {
+        if (extrak[i].checked) {
+          console.log(extrak[i].value);
+        }
+      }
+    }
+  </script>
+</body>

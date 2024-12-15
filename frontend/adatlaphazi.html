@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+
+<head>
+  <title>adatlap</title>
+  <meta charset="utf-8 " />
+  <meta name="title" content="adatlap" />
+  <meta name="description" content="adatokfeltoltese" />
+</head>
+
+<style>
+  .st {
+    padding: 20px;
+    background-color: aqua;
+  }
+</style>
+
+<body>
+  <center>
+    <div class="st">
+      Nev:
+      <input type="text" id="nev" />
+      Email:
+      <input type="email" id="email" />
+      Jelszo:
+      <input type="password" id="jelszo" />
+      Telszam:
+      <input type="tel" id="telszam" />
+    </div>
+
+    <div class="st">
+      Ferfi:
+      <input type="radio" value="Ferfi" name="nem" />
+      No:
+      <input type="radio" value="No" name="nem" />
+      Egyebb:
+      <input type="radio" value="Egyebb" name="nem" />
+    </div>
+
+    <div class="st">
+      Hirlevel:
+      <input type="checkbox" id="news" />
+    </div>
+
+    <div class="st">
+      Hobby:
+      <select id="hobby">
+        <option value="Sport">Sport</option>
+        <option value="Zene">Zene</option>
+        <option value="Gaming">Gaming</option>
+      </select>
+    </div>
+
+    <div class="st">
+      Kepfeltoltes:
+      <input type="file" accept="image/*" id="image" />
+    </div>
+
+    <div class="st">
+      Irj picit magadrol:
+      <textarea id="szoveg"></textarea>
+    </div>
+
+    <div class="st">
+      Adatvedelem elfogadasa:
+      <input type="checkbox" id="gdpr" />
+    </div>
+
+    <div class="st">
+      <button onclick="Submit()">Feltoltes</button>
+    </div>
+  </center>
+</body>
+
+<script>
+  function Submit() {
+    const nev = document.getElementById("nev");
+    const email = document.getElementById("email");
+    const jelszo = document.getElementById("jelszo");
+    const telszam = document.getElementById("telszam");
+    const nem = document.getElementsByName("nem");
+    const news = document.getElementById("news");
+    const hobby = document.getElementById("hobby");
+    const image = document.getElementById("image");
+    const szoveg = document.getElementById("szoveg");
+    const gdpr = document.getElementById("gdpr");
+
+    console.log("nev:", nev.value);
+    console.log("email:", email.value);
+    console.log("jelszo:", jelszo.value);
+    console.log("telszam:", telszam.value);
+
+    for (let i = 0; i < nem.length; i++) {
+      if (nem[i].checked) {
+        console.log("nem:", nem[i].value);
+      }
+    }
+    console.log("feliratkozas elfogadas:", news.checked);
+    console.log("hobby:", hobby.value);
+    console.log("Keplink:", image.value);
+    console.log("rovid leiras:", szoveg.value);
+    console.log("gdpr elfogadas:", gdpr.checked);
+  }
+</script>

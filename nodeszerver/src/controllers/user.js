@@ -14,11 +14,11 @@ async function AddUser(req, res) {
     const titkosJelszo = await bcrypt.hash(jelszo, 10)
     const ugyanaz = await bcrypt.compare(jelszoMegerosit, titkosJelszo)
     if (!ugyanaz) {
-      res.status(400).send('nem ugyanaz a ket jelszo')
+      res.status(400).send('password doesnt match')
       return
     }
     await addUsers(nev, titkosJelszo, email)
-    res.send('sikeres')
+    res.send('succesfully created user')
   } catch (error) {
     res.status(400).send(error)
   }
@@ -29,7 +29,7 @@ async function ModifyUsers(req, res) {
     const { email, nev } = await modifyRule.validateAsync(req.body)
     const { felhasznaloID } = req.params
     await modifyUsers(felhasznaloID, nev, email)
-    res.send('sikeres')
+    res.send('succesfully modified user')
   } catch (error) {
     res.status(400).send(error)
   }
@@ -38,7 +38,7 @@ async function ModifyUsers(req, res) {
 async function DeleteUsers(req, res) {
   const { felhasznaloID } = req.params
   await deleteUsers(felhasznaloID)
-  res.send('sikeres')
+  res.send('succesfully deleted')
 }
 
 export const userController = {

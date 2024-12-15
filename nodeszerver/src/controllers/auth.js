@@ -11,7 +11,7 @@ async function LoginUser(req, res) {
       res.status(400).send('helytelen jelszo')
       return
     }
-    res.send('sikeres a belepes')
+    res.send('succesfull login')
   } catch (error) {
     res.status(400).send(error)
   }
